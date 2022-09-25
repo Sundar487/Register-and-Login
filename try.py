@@ -19,8 +19,8 @@ def checkpassword(password):
 
 def register():
     db = open("database.txt", "r")
-    Username = input("Enter a username:")
-    check(Username)
+    email = input("Enter a email :")
+    check(email)
 
     Password = input("Create password:")
     checkpassword(Password)
@@ -39,21 +39,21 @@ def register():
         print("Passwords don't match,restart")
         register()
     else:
-        if Username in d:
-            print("username exists")
+        if email in d:
+            print("email  exists")
             register()
         else:
             db = open("database.txt", "a")
-            db.write(Username+", "+Password+"\n")
+            db.write(email+", "+Password+"\n")
             print("Success")
 
 
 
 def gainAccess():
-    Username = input("Enter your username:")
+    email  = input("Enter your username:")
     Password = input("Enter your Password:")
 
-    if not len(Username or Password) < 1:
+    if not len(email  or Password) < 1:
         if True:
             db = open("database.txt", "r")
             d = []
@@ -66,19 +66,18 @@ def gainAccess():
                 f.append(b)
                 data = dict(zip(d, f))
             try:
-               if data[Username]:
+               if data[email]:
                    try:
-                       if Password == data[Username]:
+                       if Password == data[email]:
                            print("Login success")
-                           print("Hi", Username)
                        else:
-                           print("Password or Username incorrect")
+                           print("Password or email  incorrect")
                    except:
-                       print("incorrect password or username")
+                       print("incorrect password or email ")
                else:
-                   print("Username or password doesn't exist")
+                   print("email or password doesn't exist")
             except:
-                print("Username or password doesn't exist")
+                print("email or password doesn't exist")
         else:
             print("Please enter a value")
 
